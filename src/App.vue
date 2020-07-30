@@ -79,6 +79,7 @@ export default {
       }
     },
     async onRandom() {
+      this.isLoading = true;
       const data = await unplash.random();
       if (data) {
         const photo = {
@@ -89,6 +90,7 @@ export default {
 
         };
         this.photos = [photo];
+        this.isLoading = false;
       }
     },
   },
