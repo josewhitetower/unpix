@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container mx-auto">
+  <div id="app" class="px-2">
     <h1>Unpix</h1>
     <form @submit.prevent="onSumbit">
       <input type="text" v-model="query" />

@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-3 gap-1 md:gap-5 max-w-3xl mx-auto">
+  <div class="grid grid-cols-3 gap-1 md:gap-2 max-w-3xl mx-auto">
     <PhotoCard v-for="photo in photos" :key="photo.id" :photo="photo" />
   </div>
 </template>
