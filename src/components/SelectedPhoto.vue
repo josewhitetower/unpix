@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed bg-back inset-0 px-4 md:px-20 py-12 z-10 overflow-auto"
+    class="fixed bg-back inset-0 px-4 md:px-64 py-12 z-10 overflow-y-auto overflow-x-hidden"
     @click="onClick"
   >
     <!--Art Directions -->
@@ -12,7 +12,7 @@
         :src="photo.url + '&w=620&dpr=2'"
         :alt="photo.alt"
         loading="lazy"
-        class="border-4 border-white"
+        class="border-4 border-white w-full"
         @load="isLoading = false"
       />
     </picture>
