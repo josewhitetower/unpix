@@ -54,6 +54,7 @@ export default {
       this.photos = [];
       this.query = '';
       this.page = 1;
+      this.isLoading = false;
     },
     onScroll() {
       if (
