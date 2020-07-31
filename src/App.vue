@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="container mx-auto">
     <h1>Unpix</h1>
     <form @submit.prevent="onSumbit">
       <input type="text" v-model="query" />
@@ -7,27 +7,27 @@
     <button @click="onReset">x</button>
     <button @click="onRandom">random</button>
     <span v-if="isLoading">Loading</span>
-    <img
-      v-for="photo in photos"
-      :key="photo.id"
-      :src="photo.url"
-      :alt="photo.alt"
-    />
+    <PhotosGrid :photos="photos"/>
+
   </div>
 </template>
 
 <script>
 import unplash from './api/unplash';
+import PhotosGrid from './components/PhotosGrid';
+// import seed from './seed';
 export default {
   name: 'App',
   data: () => ({
     query: '',
     page: 1,
-    per_page: 50,
+    per_page: 20,
     isLoading: false,
     photos: [],
   }),
-  components: {},
+  components: {
+    PhotosGrid,
+  },
   mounted() {
     window.addEventListener('scroll', this.onScroll);
   },
@@ -71,12 +71,14 @@ export default {
               id: photo.id,
               alt: photo.alt_description,
               likes: photo.likes,
-              url: photo.urls.raw + '&w=150&dpr=2',
+              url: photo.urls.raw,
             };
           })
         );
         this.isLoading = false;
       }
+      // this.photos = seed;
+      // this.isLoading = false;
     },
     async onRandom() {
       this.isLoading = true;
