@@ -7,8 +7,7 @@
     <button @click="onReset">x</button>
     <button @click="onRandom">random</button>
     <span v-if="isLoading">Loading</span>
-    <PhotosGrid :photos="photos"/>
-
+    <PhotosGrid :photos="photos" />
   </div>
 </template>
 
@@ -42,7 +41,7 @@ export default {
     onSumbit() {
       this.isLoading = true;
       this.photos = [];
-      this.fetchFotos()
+      this.fetchFotos();
     },
     onReset() {
       this.photos = [];
@@ -63,8 +62,11 @@ export default {
     },
     async fetchFotos() {
       const query = `query=${this.query}&page=${this.page}&per_page=${this.per_page}`;
-      const data = await unplash.search(query);
-      if (data) {
+      try {
+        const data = await unplash.search(query);
+        if (data.error) {
+          throw new Error(data.error.message)
+        }
         this.photos = this.photos.concat(
           data.results.map((photo) => {
             return {
@@ -76,12 +78,15 @@ export default {
                 name: photo.user.name,
                 instagram: photo.user.instagram_username,
                 twitter: photo.user.twitter_username,
-                portfolio: photo.user.portfolio_url
-              }
+                portfolio: photo.user.portfolio_url,
+              },
             };
           })
         );
         this.isLoading = false;
+      } catch (error) {
+        console.error(error.message);
+        this.isLoading = false
       }
       // this.photos = seed;
       // this.isLoading = false;
@@ -95,7 +100,6 @@ export default {
           alt: data.alt_description,
           likes: data.likes,
           url: data.urls.raw + '&w=150&dpr=2',
-
         };
         this.photos = [photo];
         this.isLoading = false;
