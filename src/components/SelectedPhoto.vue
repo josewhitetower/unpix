@@ -1,0 +1,42 @@
+<template>
+  <div class="fixed bg-back inset-0 px-4 md:px-20 py-12 z-10 overflow-auto" @click="onClick">
+    <!--Art Directions -->
+    <span v-if="isLoading">Loading</span>
+    <picture>
+        <source media="(max-width: 640px)" :srcset="photo.url + '&w=379&dpr=2'">
+        <source media="(min-width: 641px)" :srcset="photo.url + '&w=620&dpr=2'">
+        <img :src="photo.url + '&w=620&dpr=2'" :alt="photo.alt" loading="lazy" class="border-4 border-white" @load="isLoading=false">
+    </picture>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    photo: {
+      required: true,
+      default: () => ({}),
+    },
+  },
+  data:() => ({
+      isLoading: true
+  }),
+  computed: {
+    getPhotoURLw620() {
+      return this.photo.url + '&w=620&dpr=2';
+    },
+    getPhotoURLw379() {
+      return this.photo.url + '&w=379&dpr=2';
+    },
+  },
+  methods: {
+    onClick(e) {
+      if (e.target.classList.contains('fixed')) {
+        this.$emit('close');
+      }
+    },
+  },
+};
+</script>
+
+<style></style>

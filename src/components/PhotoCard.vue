@@ -1,21 +1,18 @@
 <template>
-  <div class="mx-auto cursor-pointer overflow-hidden rounded-sm relative">
-    <!-- Desktop Images -->
-    <img
-      class="hidden md:block object-cover h-64 w-64"
-      :src="getPhotoURLw250"
-      :alt="photo.alt"
-      loading="lazy"
-    />
-    <!-- Mobile Images -->
-    <img
-      class="md:hidden object-cover h-40 w-40"
-      :src="getPhotoURLw160"
-      :alt="photo.alt"
-      loading="lazy"
-    />
-    <div class="absolute inset-0 flex justify-center items-center hover:bg-back font-bold opacity-0 hover:opacity-100 text-white">
-        🤍 {{photo.likes}}
+  <div
+    class="mx-auto cursor-pointer overflow-hidden rounded-sm relative"
+    @click="onClick"
+  >
+    <!--Art Directions -->
+    <picture>
+        <source media="(max-width: 640px)" :srcset="photo.url + '&w=160&dpr=2'">
+        <source media="(min-width: 641px)" :srcset="photo.url + '&w=250&dpr=2'">
+        <img :src="photo.url + '&w=250&dpr=2'" :alt="photo.alt" loading="lazy" class="object-cover h-40 w-40 md:h-64 md:w-64">
+    </picture>
+    <div
+      class="absolute inset-0 flex justify-center items-center hover:bg-back font-bold opacity-0 hover:opacity-100 text-white"
+    >
+      🤍 {{ photo.likes }}
     </div>
   </div>
 </template>
@@ -30,11 +27,10 @@ export default {
     },
   },
   computed: {
-    getPhotoURLw250() {
-      return this.photo.url + '&w=250&dpr=2';
-    },
-    getPhotoURLw160() {
-      return this.photo.url + '&w=160&dpr=2';
+  },
+  methods: {
+    onClick() {
+      this.$emit('select', this.photo);
     },
   },
 };
