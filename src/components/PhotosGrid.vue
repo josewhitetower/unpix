@@ -17,12 +17,6 @@ export default {
     PhotoCard,
   },
   methods: {
-    getPhotoURLw242(url) {
-      return url + '&w=242&dpr=2';
-    },
-    getPhotoURLw128(url) {
-      return url + '&w=128&dpr=2';
-    },
   },
 };
 </script>

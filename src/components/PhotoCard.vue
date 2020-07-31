@@ -3,7 +3,7 @@
     <!-- Desktop Images -->
     <img
       class="hidden md:block object-cover h-64 w-64"
-      :src="getPhotoURLw242"
+      :src="getPhotoURLw250"
       :alt="photo.alt"
       loading="lazy"
     />
@@ -30,8 +30,8 @@ export default {
     },
   },
   computed: {
-    getPhotoURLw242() {
-      return this.photo.url + '&w=242&dpr=2';
+    getPhotoURLw250() {
+      return this.photo.url + '&w=250&dpr=2';
     },
     getPhotoURLw160() {
       return this.photo.url + '&w=160&dpr=2';
