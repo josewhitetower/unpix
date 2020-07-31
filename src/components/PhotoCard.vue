@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto opacity-100 hover:opacity-75 cursor-pointer overflow-hidden rounded-sm">
+  <div class="mx-auto cursor-pointer overflow-hidden rounded-sm relative">
     <!-- Desktop Images -->
     <img
       class="hidden md:block object-cover h-64 w-64"
@@ -14,6 +14,9 @@
       :alt="photo.alt"
       loading="lazy"
     />
+    <div class="absolute inset-0 flex justify-center items-center hover:bg-back font-bold opacity-0 hover:opacity-100 text-white">
+        🤍 {{photo.likes}}
+    </div>
   </div>
 </template>
 

@@ -21,7 +21,7 @@ export default {
   data: () => ({
     query: '',
     page: 1,
-    per_page: 20,
+    per_page: 50,
     isLoading: false,
     photos: [],
   }),
@@ -72,6 +72,12 @@ export default {
               alt: photo.alt_description,
               likes: photo.likes,
               url: photo.urls.raw,
+              user: {
+                name: photo.user.name,
+                instagram: photo.user.instagram_username,
+                twitter: photo.user.twitter_username,
+                portfolio: photo.user.portfolio_url
+              }
             };
           })
         );
