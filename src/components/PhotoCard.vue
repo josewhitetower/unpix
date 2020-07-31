@@ -10,7 +10,7 @@
     <!-- Mobile Images -->
     <img
       class="md:hidden object-cover h-40 w-40"
-      :src="getPhotoURLw128"
+      :src="getPhotoURLw160"
       :alt="photo.alt"
       loading="lazy"
     />
@@ -30,8 +30,8 @@ export default {
     getPhotoURLw242() {
       return this.photo.url + '&w=242&dpr=2';
     },
-    getPhotoURLw128() {
-      return this.photo.url + '&w=128&dpr=2';
+    getPhotoURLw160() {
+      return this.photo.url + '&w=160&dpr=2';
     },
   },
 };
