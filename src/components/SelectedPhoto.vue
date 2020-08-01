@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed bg-back inset-0 px-4 md:px-64 py-12 z-10 overflow-y-auto overflow-x-hidden"
+    class="fixed bg-back inset-0 px-4 md:px-64 py-12 z-10 overflow-y-auto overflow-x-hidden text-gray-800"
     @click="onClick"
   >
     <!--Art Directions -->
