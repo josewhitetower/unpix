@@ -8,7 +8,7 @@
     <button @click="onRandom">random</button>
     <span v-if="isLoading">Loading</span>
     <SelectedPhoto :photo="selectedPhoto" v-if="selectedPhoto" @close="selectedPhoto = null"/>
-    <TopBar/>
+    <TopBar :tab="tab" @select="onTab"/>
     <PhotosGrid :photos="photos" @select="onSelect"/>
   </div>
 </template>
@@ -27,7 +27,8 @@ export default {
     per_page: 50,
     isLoading: false,
     photos: [],
-    selectedPhoto: null
+    selectedPhoto: null,
+    tab: 'photos'
   }),
   components: {
     PhotosGrid,
@@ -45,6 +46,9 @@ export default {
     },
   },
   methods: {
+    onTab(data) {
+      this.tab = data
+    },
     onSelect(photo) {
       this.selectedPhoto = photo
     },
