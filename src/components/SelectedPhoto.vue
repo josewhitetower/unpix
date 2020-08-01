@@ -21,7 +21,8 @@
           loading="lazy"
           width="672"
           :height="672 / photo.ratio"
-          class="border-4 border-white"
+          :class="{'opacity-100' : !isLoading}"
+          class="border-4 border-white transition-opacity duration-500 ease-in-out opacity-0"
           @load="isLoading = false"
         />
       </picture>
