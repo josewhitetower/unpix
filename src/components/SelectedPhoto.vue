@@ -4,8 +4,9 @@
     @click="onClick"
   >
     <!--Art Directions -->
-    <div class="flex flex-col items-center w-full max-w-2xl mx-auto relative bg-black">
-    <span class="absolute inset-0 mt-4" v-if="isLoading">Loading</span>
+    <div
+      class="flex flex-col items-center w-full max-w-2xl mx-auto relative bg-black"
+    >
       <picture>
         <source
           media="(max-width: 640px)"
@@ -21,7 +22,7 @@
           loading="lazy"
           width="672"
           :height="672 / photo.ratio"
-          :class="{'opacity-100' : !isLoading}"
+          :class="{'opacity-100': !isLoading}"
           class="border-4 border-white transition-opacity duration-500 ease-in-out opacity-0"
           @load="isLoading = false"
         />
