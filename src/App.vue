@@ -89,6 +89,7 @@ export default {
       //         alt: photo.alt_description,
       //         likes: photo.likes,
       //         url: photo.urls.raw,
+      //         ratio: photo.width / photo.height,
       //         user: {
       //           name: photo.user.name,
       //           instagram: photo.user.instagram_username,

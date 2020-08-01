@@ -4,21 +4,23 @@
     @click="onClick"
   >
     <!--Art Directions -->
-    <span v-if="isLoading">Loading</span>
-    <div class="flex flex-col items-center w-full max-w-2xl mx-auto">
+    <div class="flex flex-col items-center w-full max-w-2xl mx-auto relative bg-black">
+    <span class="absolute inset-0 mt-4" v-if="isLoading">Loading</span>
       <picture>
         <source
           media="(max-width: 640px)"
-          :srcset="photo.url + '&w=379&dpr=2'"
+          :srcset="photo.url + '&w=336&dpr=2'"
         />
         <source
           media="(min-width: 641px)"
-          :srcset="photo.url + '&w=620&dpr=2'"
+          :srcset="photo.url + '&w=672&dpr=2'"
         />
         <img
-          :src="photo.url + '&w=620&dpr=2'"
+          :src="photo.url + '&w=672&dpr=2'"
           :alt="photo.alt"
           loading="lazy"
+          width="672"
+          :height="672 / photo.ratio"
           class="border-4 border-white"
           @load="isLoading = false"
         />
