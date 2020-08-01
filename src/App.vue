@@ -7,7 +7,7 @@
     <button @click="onReset">x</button>
     <button @click="onRandom">random</button>
     <span v-if="isLoading">Loading</span>
-    <SelectedPhoto :photo="selectedPhoto" v-if="selectedPhoto" @close="selectedPhoto = null"/>
+    <SelectedPhoto :photo="selectedPhoto" v-if="selectedPhoto" @close="selectedPhoto = null" />
     <TopBar :tab="tab" @select="onTab"/>
     <PhotosGrid :photos="photos" @select="onSelect"/>
   </div>

@@ -40,7 +40,7 @@
           <button
             class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center text-xs"
           >
-            <v-icon name="heart" class="h-4 w-4 mr-2"></v-icon>
+            <v-icon name="heart" class="h-4 w-4 mr-2" :style="{ color : 'red' }"></v-icon>
             <span>Favorites</span>
           </button>
         </div>
