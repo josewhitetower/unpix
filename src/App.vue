@@ -90,6 +90,7 @@ export default {
       //         likes: photo.likes,
       //         url: photo.urls.raw,
       //         ratio: photo.width / photo.height,
+      //         color: photo.color,
       //         user: {
       //           name: photo.user.name,
       //           instagram: photo.user.instagram_username,

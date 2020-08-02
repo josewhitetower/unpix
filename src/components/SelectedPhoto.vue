@@ -5,7 +5,8 @@
   >
     <!--Art Directions -->
     <div
-      class="flex flex-col items-center w-full max-w-2xl mx-auto relative bg-black animate-zoom-in"
+      class="flex flex-col items-center w-full max-w-2xl mx-auto relative animate-zoom-in border-4 border-white"
+      :style="{backgroundColor: photo.color}"
     >
       <picture>
         <source
@@ -23,7 +24,7 @@
           width="672"
           :height="672 / photo.ratio"
           :class="{'opacity-100': !isLoading}"
-          class="border-4 border-white transition-opacity duration-500 ease-in-out opacity-0"
+          class="transition-opacity duration-500 ease-in-out opacity-0"
           @load="isLoading = false"
         />
       </picture>
@@ -40,7 +41,11 @@
           <button
             class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center text-xs"
           >
-            <v-icon name="heart" class="h-4 w-4 mr-2" :style="{ color : 'red' }"></v-icon>
+            <v-icon
+              name="heart"
+              class="h-4 w-4 mr-2"
+              :style="{color: 'red'}"
+            ></v-icon>
             <span>Favorites</span>
           </button>
         </div>
