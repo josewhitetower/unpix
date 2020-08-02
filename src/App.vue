@@ -115,26 +115,26 @@ export default {
     async onRandom() {
       this.isLoading = true;
       try {
-        if (photo.error) {
-          throw new Error(photo.error.message);
+        const data = await unplash.random();
+        if (data.error) {
+          throw new Error(data.error.message);
         }
-        const photo = await unplash.random();
-        if (photo) {
+        if (data) {
           const photo = {
-            id: photo.id,
-            alt: photo.alt_description,
-            likes: photo.likes,
-            url: photo.urls.raw + '&w=150&dpr=2',
-            ratio: photo.width / photo.height,
-            color: photo.color,
+            id: data.id,
+            alt: data.alt_description,
+            likes: data.likes,
+            url: data.urls.raw + '&w=150&dpr=2',
+            ratio: data.width / data.height,
+            color: data.color,
             user: {
-              name: photo.user.name,
-              instagram: photo.user.instagram_username,
-              twitter: photo.user.twitter_username,
-              portfolio: photo.user.portfolio_url,
+              name: data.user.name,
+              instagram: data.user.instagram_username,
+              twitter: data.user.twitter_username,
+              portfolio: data.user.portfolio_url,
             },
           };
-          this.photos = [photo];
+          this.selectedPhoto = photo;
           this.isLoading = false;
         }
       } catch (error) {
