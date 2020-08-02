@@ -2,7 +2,7 @@
   <div id="app" class="px-2 relative">
     <h1>Unpix</h1>
     <form @submit.prevent="onSumbit">
-      <input type="text" v-model="query" />
+      <input type="text" v-model="query" placeholder="Search..."/>
     </form>
     <button @click="onReset">x</button>
     <button @click="onRandom">random</button>
