@@ -2,22 +2,26 @@
   <div id="app" class="px-2 relative">
     <h1>Unpix</h1>
     <form @submit.prevent="onSubmit">
-      <input type="text" v-model="query" placeholder="Search..."/>
+      <input type="text" v-model="query" placeholder="Search..." />
     </form>
     <button @click="onReset">x</button>
     <button @click="onRandom">random</button>
     <span v-if="isLoading">Loading</span>
-    <SelectedPhoto :photo="selectedPhoto" v-if="selectedPhoto" @close="selectedPhoto = null" />
-    <TopBar :tab="tab" @select="onTab"/>
-    <PhotosGrid :photos="photos" @select="onSelect"/>
+    <SelectedPhoto
+      :photo="selectedPhoto"
+      v-if="selectedPhoto"
+      @close="selectedPhoto = null"
+    />
+    <TopBar :tab="tab" @select="onTab" />
+    <PhotosGrid :photos="photos" @select="onSelect" />
   </div>
 </template>
 
 <script>
 import unplash from './api/unplash';
 import PhotosGrid from './components/PhotosGrid.vue';
-import SelectedPhoto from './components/SelectedPhoto.vue'
-import TopBar from './components/TopBar.vue'
+import SelectedPhoto from './components/SelectedPhoto.vue';
+import TopBar from './components/TopBar.vue';
 import seed from './seed';
 export default {
   name: 'App',
@@ -28,12 +32,12 @@ export default {
     isLoading: false,
     photos: [],
     selectedPhoto: null,
-    tab: 'photos'
+    tab: 'photos',
   }),
   components: {
     PhotosGrid,
     SelectedPhoto,
-    TopBar
+    TopBar,
   },
   mounted() {
     window.addEventListener('scroll', this.onScroll);
@@ -47,10 +51,10 @@ export default {
   },
   methods: {
     onTab(data) {
-      this.tab = data
+      this.tab = data;
     },
     onSelect(photo) {
-      this.selectedPhoto = photo
+      this.selectedPhoto = photo;
     },
     onSubmit() {
       this.isLoading = true;
@@ -117,6 +121,14 @@ export default {
           alt: data.alt_description,
           likes: data.likes,
           url: data.urls.raw + '&w=150&dpr=2',
+          ratio: data.width / data.height,
+          color: data.color,
+          user: {
+            name: data.user.name,
+            instagram: data.user.instagram_username,
+            twitter: data.user.twitter_username,
+            portfolio: data.user.portfolio_url,
+          }
         };
         this.photos = [photo];
         this.isLoading = false;
