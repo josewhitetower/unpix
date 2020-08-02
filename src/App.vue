@@ -124,7 +124,7 @@ export default {
             id: data.id,
             alt: data.alt_description,
             likes: data.likes,
-            url: data.urls.raw + '&w=150&dpr=2',
+            url: data.urls.raw,
             ratio: data.width / data.height,
             color: data.color,
             user: {
