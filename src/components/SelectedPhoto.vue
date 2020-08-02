@@ -5,7 +5,7 @@
   >
     <!--Art Directions -->
     <div
-      class="flex flex-col items-center w-full max-w-2xl mx-auto relative bg-black"
+      class="flex flex-col items-center w-full max-w-2xl mx-auto relative bg-black animate-zoom-in"
     >
       <picture>
         <source

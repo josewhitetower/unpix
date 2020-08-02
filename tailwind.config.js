@@ -3,7 +3,17 @@ module.exports = {
 
   purge: [],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        'zoomIn': {
+          '0%': {transform:'scale(0)'},
+          '100%': {transform:'scale(1)'}
+        }
+      },
+      animation: {
+        'zoom-in': 'zoomIn 0.3s ease-in-out'
+      }
+    },
   },
   variants: {},
   plugins: [
