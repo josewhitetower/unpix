@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="px-2 relative">
     <h1>Unpix</h1>
-    <form @submit.prevent="onSumbit">
+    <form @submit.prevent="onSubmit">
       <input type="text" v-model="query" placeholder="Search..."/>
     </form>
     <button @click="onReset">x</button>
@@ -52,7 +52,7 @@ export default {
     onSelect(photo) {
       this.selectedPhoto = photo
     },
-    onSumbit() {
+    onSubmit() {
       this.isLoading = true;
       this.photos = [];
       this.fetchFotos();
