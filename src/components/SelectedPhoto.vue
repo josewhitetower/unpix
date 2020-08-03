@@ -57,6 +57,7 @@
               target="_blank"
               rel="noopener noreferrer"
               v-if="photo.user.twitter"
+              :title="photo.user.name"
             >
               <v-icon name="twitter" class="h-4 w-4"></v-icon>
             </a>
@@ -65,6 +66,7 @@
               target="_blank"
               rel="noopener noreferrer"
               v-if="photo.user.instagram"
+              :title="photo.user.name"
             >
               <v-icon name="instagram" class="h-4 w-4"></v-icon>
             </a>
@@ -73,6 +75,7 @@
               target="_blank"
               rel="noopener noreferrer"
               v-if="photo.user.portfolio"
+              :title="photo.user.name"
             >
               <v-icon name="link" class="h-4 w-4"></v-icon>
             </a>
