@@ -11,18 +11,18 @@
       <picture>
         <source
           media="(max-width: 640px)"
-          :srcset="photo.url + '&w=336&dpr=2'"
+          :srcset="`${photo.url}&w=${photo.ratio * 250}&dpr=2`"
         />
         <source
           media="(min-width: 641px)"
-          :srcset="photo.url + '&w=672&dpr=2'"
+          :srcset="`${photo.url}&w=${photo.ratio * 500}&dpr=2`"
         />
         <img
-          :src="photo.url + '&w=672&dpr=2'"
+          :src="`${photo.url}&w=${photo.ratio * 500}&dpr=2`"
           :alt="photo.alt"
           loading="lazy"
-          width="672"
-          :height="672 / photo.ratio"
+          :width="photo.ratio * 500"
+          :height="500"
           :class="{'opacity-100': !isLoading}"
           class="transition-opacity duration-500 ease-in-out opacity-0"
           @load="isLoading = false"
