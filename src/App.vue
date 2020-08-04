@@ -70,6 +70,7 @@ export default {
         currentPage = currentPage + 1;
         this.isLoading = true;
         this.page = currentPage;
+        this.fetchFotos();
       }
     },
     async fetchFotos() {
@@ -80,9 +81,10 @@ export default {
       //     throw new Error(data.error.message)
       //   }
       //   this.photos = this.photos.concat(
-      //     data.results.map((photo) => {
+      //     data.results.map((photo, index) => {
       //       return {
       //         id: photo.id,
+      //         index: index,
       //         alt: photo.alt_description,
       //         likes: photo.likes,
       //         url: photo.urls.raw,
@@ -102,8 +104,8 @@ export default {
       //   console.error(error.message);
       //   this.isLoading = false
       // }
-      this.photos = seed;
-      this.isLoading = false;
+      // this.photos = seed;
+      // this.isLoading = false;
     },
     async onRandom() {
       this.isLoading = true;
