@@ -1,13 +1,15 @@
 <template>
-  <div class="flex justify-center items-center text-gray-500">
-    <v-icon name="search" class="h-4 w-4 mr-2"></v-icon>
+  <div class="flex justify-center items-center text-gray-500 text-sm mb-4">
+    <span class="flex items-center  mr-2 cursor-pointer" @click="$emit('random')">
+      Random <v-icon name="shuffle" class="h-4 w-4 ml-px"></v-icon>
+    </span>
     <form @submit.prevent="$emit('submit', term)">
       <div class="relative">
         <input
           type="text"
           placeholder="Search..."
           v-model="term"
-          class="border focus:outline-none pl-2 pr-5 py-px text-sm"
+          class="border focus:outline-none pl-2 pr-5 py-px"
         />
         <v-icon
           name="x"
