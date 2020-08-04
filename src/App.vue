@@ -1,10 +1,7 @@
 <template>
   <div id="app" class="px-2 relative">
     <h1>Unpix</h1>
-    <form @submit.prevent="onSubmit">
-      <input type="text" v-model="query" placeholder="Search..." />
-    </form>
-    <button @click="onReset">x</button>
+    <Search :query="query" @reset="onReset" @submit="onSubmit" />
     <button @click="onRandom">random</button>
     <span v-if="isLoading">Loading</span>
     <SelectedPhoto
@@ -22,6 +19,7 @@ import unplash from './api/unplash';
 import PhotosGrid from './components/PhotosGrid.vue';
 import SelectedPhoto from './components/SelectedPhoto.vue';
 import TopBar from './components/TopBar.vue';
+import Search from './components/Search.vue';
 import seed from './seed';
 export default {
   name: 'App',
@@ -38,16 +36,10 @@ export default {
     PhotosGrid,
     SelectedPhoto,
     TopBar,
+    Search,
   },
   mounted() {
     window.addEventListener('scroll', this.onScroll);
-  },
-  watch: {
-    page() {
-      if (this.query) {
-        this.fetchFotos();
-      }
-    },
   },
   methods: {
     onTab(data) {
@@ -56,7 +48,8 @@ export default {
     onSelect(photo) {
       this.selectedPhoto = photo;
     },
-    onSubmit() {
+    onSubmit(data) {
+      this.query = data;
       this.isLoading = true;
       this.photos = [];
       this.fetchFotos();

@@ -43,8 +43,7 @@
           >
             <v-icon
               name="heart"
-              class="h-4 w-4 mr-2"
-              :style="{color: 'red'}"
+              class="h-4 w-4 mr-2 text-red-600"
             ></v-icon>
             <span>Favorites</span>
           </button>
