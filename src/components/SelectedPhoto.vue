@@ -40,10 +40,12 @@
           </button>
           <button
             class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center text-xs"
+            @click="$emit('favorite', photo)"
           >
             <v-icon
               name="heart"
-              class="h-4 w-4 mr-2 text-red-600"
+              class="h-4 w-4 mr-2"
+              :class="{'text-red-600' : isFavorite}"
             ></v-icon>
             <span>Favorites</span>
           </button>
@@ -92,6 +94,10 @@ export default {
       required: true,
       default: () => ({}),
     },
+    isFavorite: {
+      required: false,
+      default: () => (false)
+    }
   },
   data: () => ({
     isLoading: true,

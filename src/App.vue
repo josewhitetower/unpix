@@ -8,9 +8,11 @@
       :photo="selectedPhoto"
       v-if="selectedPhoto"
       @close="selectedPhoto = null"
+      @favorite="onFavorite"
+      :is-favorite="isSelectedPhotoFavorite"
     />
     <TopBar :tab="tab" @select="onTab" />
-    <PhotosGrid :photos="photos" @select="onSelect" />
+    <PhotosGrid :photos="selectedTab" @select="onSelect" />
   </div>
 </template>
 
@@ -31,6 +33,7 @@ export default {
     photos: [],
     selectedPhoto: null,
     tab: 'photos',
+    favorites: [],
   }),
   components: {
     PhotosGrid,
@@ -41,7 +44,23 @@ export default {
   mounted() {
     window.addEventListener('scroll', this.onScroll);
   },
+  computed: {
+    selectedTab() {
+      return this.tab === 'photos' ? this.photos : this.favorites;
+    },
+    isSelectedPhotoFavorite() {
+      return this.favorites.find((ph) => ph.id === this.selectedPhoto.id);
+    },
+  },
   methods: {
+    onFavorite(photo) {
+      const includesPhoto = this.favorites.find((ph) => ph.id === photo.id);
+      if (!includesPhoto) {
+        this.favorites.push(photo);
+      } else {
+        this.favorites = this.favorites.filter((ph) => ph.id != photo.id);
+      }
+    },
     onTab(data) {
       this.tab = data;
     },
@@ -104,8 +123,8 @@ export default {
       //   console.error(error.message);
       //   this.isLoading = false
       // }
-      // this.photos = seed;
-      // this.isLoading = false;
+      this.photos = seed;
+      this.isLoading = false;
     },
     async onRandom() {
       this.isLoading = true;
