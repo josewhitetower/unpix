@@ -43,6 +43,9 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.onScroll);
+    if (localStorage.favorites) {
+      this.favorites = JSON.parse(localStorage.favorites);
+    }
   },
   computed: {
     selectedTab() {
@@ -51,6 +54,11 @@ export default {
     isSelectedPhotoFavorite() {
       return this.favorites.find((ph) => ph.id === this.selectedPhoto.id);
     },
+  },
+  watch: {
+    favorites() {
+      localStorage.favorites = JSON.stringify(this.favorites)
+    }
   },
   methods: {
     onFavorite(photo) {
@@ -103,7 +111,6 @@ export default {
       //     data.results.map((photo, index) => {
       //       return {
       //         id: photo.id,
-      //         index: index,
       //         alt: photo.alt_description,
       //         likes: photo.likes,
       //         url: photo.urls.raw,
