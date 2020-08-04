@@ -1,8 +1,12 @@
 <template>
   <div id="app" class="px-2 relative">
     <h1>Unpix</h1>
-    <Search :query="query" @reset="onReset" @submit="onSubmit" />
-    <button @click="onRandom">random</button>
+    <Search
+      :query="query"
+      @reset="onReset"
+      @submit="onSubmit"
+      @random="onRandom"
+    />
     <span v-if="isLoading">Loading</span>
     <SelectedPhoto
       :photo="selectedPhoto"
