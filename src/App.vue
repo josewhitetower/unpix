@@ -116,6 +116,7 @@ export default {
       //         url: photo.urls.raw,
       //         ratio: photo.width / photo.height,
       //         color: photo.color,
+      //         big: index % 9 === 0 && index !== 0,
       //         user: {
       //           name: photo.user.name,
       //           instagram: photo.user.instagram_username,
@@ -130,8 +131,8 @@ export default {
       //   console.error(error.message);
       //   this.isLoading = false
       // }
-      this.photos = seed;
-      this.isLoading = false;
+      // this.photos = seed;
+      // this.isLoading = false;
     },
     async onRandom() {
       this.isLoading = true;
