@@ -22,7 +22,7 @@ import PhotosGrid from './components/PhotosGrid.vue';
 import SelectedPhoto from './components/SelectedPhoto.vue';
 import TopBar from './components/TopBar.vue';
 import Search from './components/Search.vue';
-import seed from './seed';
+// import seed from './seed';
 export default {
   name: 'App',
   data: () => ({
@@ -57,8 +57,8 @@ export default {
   },
   watch: {
     favorites() {
-      localStorage.favorites = JSON.stringify(this.favorites)
-    }
+      localStorage.favorites = JSON.stringify(this.favorites);
+    },
   },
   methods: {
     onFavorite(photo) {
@@ -77,7 +77,6 @@ export default {
     },
     onSubmit(data) {
       this.query = data;
-      this.isLoading = true;
       this.photos = [];
       this.fetchFotos();
     },
@@ -95,42 +94,42 @@ export default {
       ) {
         let currentPage = this.page;
         currentPage = currentPage + 1;
-        this.isLoading = true;
         this.page = currentPage;
         this.fetchFotos();
       }
     },
     async fetchFotos() {
-      // const query = `query=${this.query}&page=${this.page}&per_page=${this.per_page}`;
-      // try {
-      //   const data = await unplash.search(query);
-      //   if (data.error) {
-      //     throw new Error(data.error.message)
-      //   }
-      //   this.photos = this.photos.concat(
-      //     data.results.map((photo, index) => {
-      //       return {
-      //         id: photo.id,
-      //         alt: photo.alt_description,
-      //         likes: photo.likes,
-      //         url: photo.urls.raw,
-      //         ratio: photo.width / photo.height,
-      //         color: photo.color,
-      //         big: index % 9 === 0 && index !== 0,
-      //         user: {
-      //           name: photo.user.name,
-      //           instagram: photo.user.instagram_username,
-      //           twitter: photo.user.twitter_username,
-      //           portfolio: photo.user.portfolio_url,
-      //         },
-      //       };
-      //     })
-      //   );
-      //   this.isLoading = false;
-      // } catch (error) {
-      //   console.error(error.message);
-      //   this.isLoading = false
-      // }
+      this.isLoading = true;
+
+      const query = `query=${this.query}&page=${this.page}&per_page=${this.per_page}`;
+      try {
+        const data = await unplash.search(query);
+        if (data.error) {
+          throw new Error(data.error.message);
+        }
+        this.photos = this.photos.concat(
+          data.results.map((photo) => {
+            return {
+              id: photo.id,
+              alt: photo.alt_description,
+              likes: photo.likes,
+              url: photo.urls.raw,
+              ratio: photo.width / photo.height,
+              color: photo.color,
+              user: {
+                name: photo.user.name,
+                instagram: photo.user.instagram_username,
+                twitter: photo.user.twitter_username,
+                portfolio: photo.user.portfolio_url,
+              },
+            };
+          })
+        );
+        this.isLoading = false;
+      } catch (error) {
+        console.error(error.message);
+        this.isLoading = false;
+      }
       // this.photos = seed;
       // this.isLoading = false;
     },

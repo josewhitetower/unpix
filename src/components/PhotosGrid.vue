@@ -1,9 +1,10 @@
 <template>
   <div class="grid grid-cols-3 gap-1 md:gap-2 max-w-3xl mx-auto">
     <PhotoCard
-      v-for="photo in photos"
+      v-for="(photo, index) in photos"
       :key="photo.id"
       :photo="photo"
+      :big-layout="index % 9 === 0 && index !== 0"
       @select="onSelect"
     />
   </div>

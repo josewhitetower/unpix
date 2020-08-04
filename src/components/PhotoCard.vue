@@ -27,11 +27,12 @@ export default {
       required: true,
       default: () => ({}),
     },
+    bigLayout: {
+      required: false,
+      default:() => (false)
+    }
   },
   computed: {
-    bigLayout() {
-      return !!this.photo.big
-    },
     imageSrc() {
       return this.bigLayout ? `${this.photo.url}&w=600&dpr=2` : `${this.photo.url}&w=250&dpr=2`
     }
