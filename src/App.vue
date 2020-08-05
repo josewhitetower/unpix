@@ -5,13 +5,16 @@
     v-infinite-scroll="fetchFotos"
     :infinite-scroll-disabled="!isLoading"
   >
-    <h1>Unpix</h1>
-    <Search
-      :query="query"
-      @reset="onReset"
-      @submit="onSubmit"
-      @random="onRandom"
-    />
+    <div class="fixed bg-white z-10 w-full">
+      <h1>Unpix</h1>
+      <Search
+        :query="query"
+        @reset="onReset"
+        @submit="onSubmit"
+        @random="onRandom"
+      />
+      <TopBar :tab="tab" @select="onTab" />
+    </div>
     <span v-if="isLoading">Loading</span>
     <SelectedPhoto
       :photo="selectedPhoto"
@@ -20,7 +23,6 @@
       @favorite="onFavorite"
       :is-favorite="isSelectedPhotoFavorite"
     />
-    <TopBar :tab="tab" @select="onTab" />
     <PhotosGrid :photos="selectedTab" @select="onSelect" />
   </div>
 </template>
@@ -101,7 +103,7 @@ export default {
         if (data.error) {
           throw new Error(data.error.message);
         }
-        this.photos = this.transformPhotos(data)
+        this.photos = this.transformPhotos(data);
       } catch (error) {
         console.error(error.message);
       }
