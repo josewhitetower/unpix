@@ -8,7 +8,11 @@
       class="flex flex-col items-center w-full max-w-2xl mx-auto relative animate-zoom-in border-4 border-white"
       :style="{backgroundColor: photo.color}"
     >
-      <picture>
+      <picture
+        :class="{blur: isLoading}"
+        class="bg-cover"
+        :style="{'background-image': `url(${thumbSrc}`}"
+      >
         <source
           media="(max-width: 640px)"
           :srcset="`${photo.url}&w=${photo.ratio * 250}&dpr=2`"
@@ -108,7 +112,11 @@ export default {
   data: () => ({
     isLoading: true,
   }),
-  computed: {},
+  computed: {
+    thumbSrc() {
+      return this.photo.url + '?q=75&fm=jpg&w=50&fit=max';
+    },
+  },
   methods: {
     onClick(e) {
       if (e.target.classList.contains('fixed')) {

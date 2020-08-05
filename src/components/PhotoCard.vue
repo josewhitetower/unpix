@@ -1,7 +1,7 @@
 <template>
   <div
     class="mx-auto cursor-pointer overflow-hidden rounded-sm relative"
-    :class="{'row-span-2 col-span-2': bigLayout, blur: isLoading}"
+    :class="{'row-span-2 col-span-2': bigLayout,}"
     @click="onClick"
     :style="{'background-image': `url(${thumbSrc}`}"
   >
@@ -14,7 +14,7 @@
         :alt="photo.alt"
         loading="lazy"
         class="object-cover w-full h-full"
-        :class="{'row-span-2 col-span-2': bigLayout}"
+        :class="{'row-span-2 col-span-2': bigLayout,  blur: isLoading}"
         @load="isLoading = false"
       />
     </picture>
@@ -49,7 +49,7 @@ export default {
         : `${this.photo.url}&w=250&dpr=2`;
     },
     thumbSrc() {
-      return this.photo + '?q=75&fm=jpg&w=50&fit=max';
+      return this.photo.url + '?q=75&fm=jpg&w=50&fit=max';
     },
     mobileSrc() {
       return this.photo.url + '&w=160&dpr=2';
