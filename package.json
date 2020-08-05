@@ -14,7 +14,8 @@
     "tailwindcss": "^1.6.0",
     "unsplash-js": "^6.0.0",
     "vue": "^2.6.11",
-    "vue-icon": "^2.1.2"
+    "vue-icon": "^2.1.2",
+    "vue-infinite-scroll": "^2.0.2"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^2.3.0",

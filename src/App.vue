@@ -1,5 +1,10 @@
 <template>
-  <div id="app" class="px-2 relative">
+  <div
+    id="app"
+    class="px-2 relative"
+    v-infinite-scroll="fetchFotos"
+    :infinite-scroll-disabled="!isLoading"
+  >
     <h1>Unpix</h1>
     <Search
       :query="query"
@@ -31,8 +36,8 @@ export default {
   name: 'App',
   data: () => ({
     query: '',
-    page: 1,
-    per_page: 50,
+    page: 0,
+    per_page: 12,
     isLoading: false,
     photos: [],
     selectedPhoto: null,
@@ -46,7 +51,7 @@ export default {
     Search,
   },
   mounted() {
-    window.addEventListener('scroll', this.onScroll);
+    // window.addEventListener('scroll', this.onScroll);
     if (localStorage.favorites) {
       this.favorites = JSON.parse(localStorage.favorites);
     }
@@ -87,53 +92,47 @@ export default {
     onReset() {
       this.photos = [];
       this.query = '';
-      this.page = 1;
+      this.page = 0;
       this.isLoading = false;
     },
-    onScroll() {
-      if (
-        window.innerHeight + window.scrollY >=
-          document.body.offsetHeight - 300 &&
-        !this.isLoading
-      ) {
+    async fetchFotos() {
+      if (!this.isLoading && this.tab === 'photos') {
         let currentPage = this.page;
         currentPage = currentPage + 1;
         this.page = currentPage;
-        this.fetchFotos();
-      }
-    },
-    async fetchFotos() {
-      this.isLoading = true;
+        this.isLoading = true;
 
-      const query = `query=${this.query}&page=${this.page}&per_page=${this.per_page}`;
-      try {
-        const data = await unplash.search(query);
-        if (data.error) {
-          throw new Error(data.error.message);
+        const query = `query=${this.query}&page=${this.page}&per_page=${this.per_page}`;
+        try {
+          const data = await unplash.search(query);
+          if (data.error) {
+            throw new Error(data.error.message);
+          }
+          this.photos = this.photos.concat(
+            data.results.map((photo) => {
+              return {
+                id: photo.id,
+                alt: photo.alt_description,
+                likes: photo.likes,
+                url: photo.urls.raw,
+                ratio: photo.width / photo.height,
+                color: photo.color,
+                user: {
+                  name: photo.user.name,
+                  instagram: photo.user.instagram_username,
+                  twitter: photo.user.twitter_username,
+                  portfolio: photo.user.portfolio_url,
+                },
+              };
+            })
+          );
+          this.isLoading = false;
+        } catch (error) {
+          console.error(error.message);
+          this.isLoading = false;
         }
-        this.photos = this.photos.concat(
-          data.results.map((photo) => {
-            return {
-              id: photo.id,
-              alt: photo.alt_description,
-              likes: photo.likes,
-              url: photo.urls.raw,
-              ratio: photo.width / photo.height,
-              color: photo.color,
-              user: {
-                name: photo.user.name,
-                instagram: photo.user.instagram_username,
-                twitter: photo.user.twitter_username,
-                portfolio: photo.user.portfolio_url,
-              },
-            };
-          })
-        );
-        this.isLoading = false;
-      } catch (error) {
-        console.error(error.message);
-        this.isLoading = false;
       }
+
       // this.photos = seed;
       // this.isLoading = false;
     },
