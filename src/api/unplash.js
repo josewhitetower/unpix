@@ -23,6 +23,13 @@ const unplash = {
       .then((response) => response.data)
       .catch((error) => ({error: error}));
   },
+  list: () => {
+    const path = '/photos?per_page=24';
+    return instance
+      .get(path)
+      .then((response) => response.data)
+      .catch((error) => ({error}));
+  },
 };
 
 module.exports = unplash;

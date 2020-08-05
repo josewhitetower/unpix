@@ -51,7 +51,7 @@ export default {
     Search,
   },
   mounted() {
-    // window.addEventListener('scroll', this.onScroll);
+    this.listPhotos();
     if (localStorage.favorites) {
       this.favorites = JSON.parse(localStorage.favorites);
     }
@@ -95,6 +95,35 @@ export default {
       this.page = 0;
       this.isLoading = false;
     },
+    async listPhotos() {
+      try {
+        const data = await unplash.list();
+        if (data.error) {
+          throw new Error(data.error.message);
+        }
+        this.photos = this.transformPhotos(data)
+      } catch (error) {
+        console.error(error.message);
+      }
+    },
+    transformPhotos(photos) {
+      return photos.map((photo) => {
+        return {
+          id: photo.id,
+          alt: photo.alt_description,
+          likes: photo.likes,
+          url: photo.urls.raw,
+          ratio: photo.width / photo.height,
+          color: photo.color,
+          user: {
+            name: photo.user.name,
+            instagram: photo.user.instagram_username,
+            twitter: photo.user.twitter_username,
+            portfolio: photo.user.portfolio_url,
+          },
+        };
+      });
+    },
     async fetchFotos() {
       if (!this.isLoading && this.tab === 'photos' && this.query) {
         this.page = ++this.page;
@@ -106,24 +135,7 @@ export default {
           if (data.error) {
             throw new Error(data.error.message);
           }
-          this.photos = this.photos.concat(
-            data.results.map((photo) => {
-              return {
-                id: photo.id,
-                alt: photo.alt_description,
-                likes: photo.likes,
-                url: photo.urls.raw,
-                ratio: photo.width / photo.height,
-                color: photo.color,
-                user: {
-                  name: photo.user.name,
-                  instagram: photo.user.instagram_username,
-                  twitter: photo.user.twitter_username,
-                  portfolio: photo.user.portfolio_url,
-                },
-              };
-            })
-          );
+          this.photos = this.photos.concat(this.transformPhotos(data.results));
           this.isLoading = false;
         } catch (error) {
           console.error(error.message);
