@@ -32,12 +32,15 @@
         class="py-8 bg-white px-4 flex flex-wrap-reverse justify-around items-center w-full"
       >
         <div>
-          <button
+          <a
+            :href="photo.download"
+            target="_blank"
+            rel="noopener noreferrer"
             class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center text-xs mr-2"
           >
             <v-icon name="download" class="h-4 w-4 mr-2"></v-icon>
             <span>Download</span>
-          </button>
+          </a>
           <button
             class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center text-xs"
             @click="$emit('favorite', photo)"
@@ -45,7 +48,7 @@
             <v-icon
               name="heart"
               class="h-4 w-4 mr-2"
-              :class="{'text-red-600' : isFavorite}"
+              :class="{'text-red-600': isFavorite}"
             ></v-icon>
             <span>Favorites</span>
           </button>
@@ -59,6 +62,7 @@
               rel="noopener noreferrer"
               v-if="photo.user.twitter"
               :title="photo.user.name"
+              class="mr-2"
             >
               <v-icon name="twitter" class="h-4 w-4"></v-icon>
             </a>
@@ -68,6 +72,7 @@
               rel="noopener noreferrer"
               v-if="photo.user.instagram"
               :title="photo.user.name"
+              class="mr-2"
             >
               <v-icon name="instagram" class="h-4 w-4"></v-icon>
             </a>
@@ -77,6 +82,7 @@
               rel="noopener noreferrer"
               v-if="photo.user.portfolio"
               :title="photo.user.name"
+              class="mr-2"
             >
               <v-icon name="link" class="h-4 w-4"></v-icon>
             </a>
@@ -96,8 +102,8 @@ export default {
     },
     isFavorite: {
       required: false,
-      default: () => (false)
-    }
+      default: () => false,
+    },
   },
   data: () => ({
     isLoading: true,
