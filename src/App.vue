@@ -37,7 +37,7 @@ export default {
   data: () => ({
     query: '',
     page: 0,
-    per_page: 12,
+    per_page: 24,
     isLoading: false,
     photos: [],
     selectedPhoto: null,
@@ -61,7 +61,7 @@ export default {
       return this.tab === 'photos' ? this.photos : this.favorites;
     },
     isSelectedPhotoFavorite() {
-      return this.favorites.find((ph) => ph.id === this.selectedPhoto.id);
+      return !!this.favorites.find((ph) => ph.id === this.selectedPhoto.id);
     },
   },
   watch: {
@@ -96,10 +96,8 @@ export default {
       this.isLoading = false;
     },
     async fetchFotos() {
-      if (!this.isLoading && this.tab === 'photos') {
-        let currentPage = this.page;
-        currentPage = currentPage + 1;
-        this.page = currentPage;
+      if (!this.isLoading && this.tab === 'photos' && this.query) {
+        this.page = ++this.page;
         this.isLoading = true;
 
         const query = `query=${this.query}&page=${this.page}&per_page=${this.per_page}`;
