@@ -21,6 +21,9 @@ module.exports = {
       const newUtilities = {
         '.bg-back': {
           backgroundColor: 'rgba(0,0,0,0.3)'
+        },
+        '.blur' : {
+          filter: 'blur(4px)'
         }
       }
       addUtilities(newUtilities, {
