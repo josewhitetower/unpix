@@ -15,7 +15,6 @@
       />
       <TopBar :tab="tab" @select="onTab" />
     </div>
-    <span v-if="isLoading">Loading</span>
     <SelectedPhoto
       :photo="selectedPhoto"
       v-if="selectedPhoto"
