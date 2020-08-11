@@ -45,14 +45,14 @@ export default {
   computed: {
     imageSrc() {
       return this.bigLayout
-        ? `${this.photo.url}&w=600&dpr=2`
-        : `${this.photo.url}&w=250&dpr=2`;
+        ? `${this.photo.url}&dpr=2&w=500&h=500&fit=crop`
+        : `${this.photo.url}&dpr=2&w=250&h=250&fit=crop`;
     },
     thumbSrc() {
-      return this.photo.url + '?q=75&fm=jpg&w=50&fit=max';
+      return this.photo.url + '?q=75&fm=jpg&w=50&fit=crop';
     },
     mobileSrc() {
-      return this.photo.url + '&w=160&dpr=2';
+      return this.photo.url + '&dpr=2&w=500&h=500&fit=crop';
     },
   },
   methods: {
