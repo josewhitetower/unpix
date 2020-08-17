@@ -6,7 +6,7 @@
     :infinite-scroll-disabled="!isLoading"
   >
     <div class="fixed bg-white z-10 w-full">
-      <h1>Unpix</h1>
+      <h1 class="font-mono text-lg md:text-2xl text-center pt-4">Unpix</h1>
       <Search
         :query="query"
         @reset="onReset"

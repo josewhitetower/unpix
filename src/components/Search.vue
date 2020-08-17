@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center items-center text-gray-500 text-sm mb-4">
+  <div class="flex items-center justify-center py-4 text-gray-500 text-sm">
     <span class="flex items-center  mr-2 cursor-pointer" @click="$emit('random')">
       Random <v-icon name="shuffle" class="h-4 w-4 ml-px"></v-icon>
     </span>
