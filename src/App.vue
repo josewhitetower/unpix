@@ -23,6 +23,17 @@
       :is-favorite="isSelectedPhotoFavorite"
     />
     <PhotosGrid :photos="selectedTab" @select="onSelect" />
+    <footer class="py-4 text-center text-sm w-full bottom-0 bg-white">
+      Powered by
+      <a
+        class="underline italic"
+        href="https://unsplash.com/"
+        rel="nofollow noopener"
+        title="Unplash"
+        target="_blank"
+        >Unplash</a
+      >
+    </footer>
   </div>
 </template>
 
