@@ -125,6 +125,13 @@ export default {
       }
     },
   },
+  mounted() {
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' || e.keyCode === 27) {
+        this.$emit('close');
+      }
+    });
+  },
 };
 </script>
 
