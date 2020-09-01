@@ -99,6 +99,7 @@
 
 <script>
 export default {
+  name: 'SelectedPhoto',
   props: {
     photo: {
       required: true,
