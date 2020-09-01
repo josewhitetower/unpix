@@ -8,16 +8,20 @@ describe('PhotoCard.vue', () => {
         photo: {},
       },
     });
-    return wrapper
-  }
+    return wrapper;
+  };
   let wp;
   beforeEach(() => {
     wp = createWrapper();
   });
 
   afterEach(() => {
-    wp.destroy()
-  })
+    wp.destroy();
+  });
+
+  it('renders correctly', () => {
+    expect(wp.exists()).toBe(true);
+  });
 
   it('initial status is loading', () => {
     expect(wp.vm.isLoading).toBe(true);
@@ -29,8 +33,7 @@ describe('PhotoCard.vue', () => {
   });
 
   it('emits custom event on click', () => {
-    wp.trigger('click')
+    wp.trigger('click');
     expect(wp.emitted('select')).toBeTruthy();
   });
-
 });
