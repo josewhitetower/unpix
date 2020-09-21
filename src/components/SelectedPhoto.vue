@@ -124,14 +124,19 @@ export default {
         this.$emit('close');
       }
     },
-  },
-  mounted() {
-    window.addEventListener('keydown', (e) => {
+    onKeyDown(e) {
+      console.log('object')
       if (e.key === 'Escape' || e.keyCode === 27) {
         this.$emit('close');
       }
-    });
+    }
   },
+  mounted() {
+    window.addEventListener('keydown', this.onKeyDown);
+  },
+  beforeDestroy(){
+    window.removeEventListener('keydown', this.onKeyDown)
+  }
 };
 </script>
 
