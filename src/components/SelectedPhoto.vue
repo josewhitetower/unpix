@@ -125,7 +125,7 @@ export default {
       }
     },
     onKeyDown(e) {
-      if (e.key === 'Escape' || e.keyCode === 27) {
+      if (e.key === 'Escape' || e.keyCode === 27 || e.key === 'Esc') {
         this.$emit('close');
       }
     }
