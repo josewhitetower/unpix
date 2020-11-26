@@ -1,7 +1,7 @@
 <template>
   <div
     id="app"
-    class="px-2 relative bg-white dark:bg-gray-800 h-screen"
+    class="px-2 relative bg-white dark:bg-gray-800"
     v-infinite-scroll="fetchFotos"
     :infinite-scroll-disabled="!isLoading"
   >
