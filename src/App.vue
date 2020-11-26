@@ -1,12 +1,12 @@
 <template>
   <div
     id="app"
-    class="px-2 relative"
+    class="px-2 relative bg-white dark:bg-gray-800"
     v-infinite-scroll="fetchFotos"
     :infinite-scroll-disabled="!isLoading"
   >
-    <div class="fixed bg-white z-10 w-full">
-      <h1 class="font-mono text-lg md:text-2xl text-center pt-4">Unpix</h1>
+    <div class="fixed bg-white dark:bg-gray-800 z-10 w-full">
+      <h1 class="font-mono text-lg md:text-2xl text-center pt-4 dark:text-gray-300">Unpix</h1>
       <Search
         :query="query"
         @reset="onReset"
@@ -23,7 +23,7 @@
       :is-favorite="isSelectedPhotoFavorite"
     />
     <PhotosGrid :photos="selectedTab" @select="onSelect" />
-    <footer class="py-4 text-center text-sm w-full bottom-0 bg-white">
+    <footer class="py-4 text-center text-sm w-full bottom-0 bg-white dark:bg-gray-800 dark:text-gray-300">
       Powered by
       <a
         class="underline italic"

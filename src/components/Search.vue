@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center py-4 text-gray-500 text-sm">
+  <div class="flex items-center justify-center py-4 text-gray-500 dark:text-gray-300 text-sm">
     <span class="flex items-center  mr-2 cursor-pointer" @click="$emit('random')">
       Random <v-icon name="shuffle" class="h-4 w-4 ml-px"></v-icon>
     </span>
@@ -9,7 +9,7 @@
           type="text"
           placeholder="Search..."
           v-model="term"
-          class="border focus:outline-none pl-2 pr-5 py-px"
+          class="border focus:outline-none pl-2 pr-5 py-px dark:text-gray-700"
         />
         <v-icon
           name="x"

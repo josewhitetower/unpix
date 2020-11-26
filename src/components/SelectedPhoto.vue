@@ -5,7 +5,7 @@
   >
     <!--Art Directions -->
     <div
-      class="flex flex-col items-center w-full max-w-2xl mx-auto relative animate-zoom-in border-4 border-white"
+      class="flex flex-col items-center w-full max-w-2xl mx-auto relative animate-zoom-in border-4 border-white dark:border-gray-700"
       :style="{backgroundColor: photo.color}"
     >
       <picture
@@ -33,7 +33,7 @@
         />
       </picture>
       <div
-        class="py-8 bg-white px-4 flex flex-wrap-reverse justify-around items-center w-full"
+        class="py-8 bg-white dark:bg-gray-700 px-4 flex flex-wrap-reverse justify-around items-center w-full"
       >
         <div>
           <a
@@ -57,7 +57,7 @@
             <span>Favorites</span>
           </button>
         </div>
-        <div class="mb-4">
+        <div class="mb-4 dark:text-gray-300">
           <span class="uppercase text-xs">©️ {{ photo.user.name }}</span>
           <div class="flex justify-around mt-2">
             <a

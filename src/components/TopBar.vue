@@ -1,18 +1,18 @@
 <template>
   <div
-    class="border-t max-w-3xl mx-auto flex justify-center text-gray-600 text-sm"
+    class="border-t max-w-3xl mx-auto flex justify-center text-gray-600 dark:text-gray-300 dark:border-gray-600 text-sm"
   >
     <div
-      :class="{'border-t border-current text-gray-800': tab === 'photos'}"
-      class="border-t mr-8 flex items-center justify-center cursor-pointer px-2 py-4 -mt-px"
+      :class="{'border-current text-gray-800 dark:text-gray-300 border-t ': tab === 'photos'}"
+      class="mr-8 flex items-center justify-center cursor-pointer px-2 py-4 -mt-px"
       @click="$emit('select', 'photos')"
     >
       <v-icon name="grid" class="h-4 w-4"></v-icon>
       <span class="ml-2">Photos</span>
     </div>
     <div
-      :class="{'border-current text-gray-800': tab === 'favorites'}"
-      class="border-t flex items-center justify-center cursor-pointer px-2 py-4 -mt-px"
+      :class="{'border-current text-gray-800 dark:text-gray-300 border-t ': tab === 'favorites'}"
+      class="flex items-center justify-center cursor-pointer px-2 py-4 -mt-px"
       @click="$emit('select', 'favorites')"
     >
       <v-icon name="heart" class="h-4 w-4"></v-icon>
