@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import './main.css'
+import "tailwindcss/tailwind.css"
 import feather from 'vue-icon'
 import infiniteScroll from 'vue-infinite-scroll'
 Vue.use(infiniteScroll)
