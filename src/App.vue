@@ -7,6 +7,7 @@
   >
     <div class="fixed bg-white dark:bg-gray-800 z-10 w-full">
       <h1 class="font-mono text-lg md:text-2xl text-center pt-4 dark:text-gray-300">Unpix</h1>
+      <LanguageSelector/>
       <Search
         :query="query"
         @reset="onReset"
@@ -43,6 +44,7 @@ import PhotosGrid from './components/PhotosGrid.vue';
 import SelectedPhoto from './components/SelectedPhoto.vue';
 import TopBar from './components/TopBar.vue';
 import Search from './components/Search.vue';
+import LanguageSelector from './components/LanguageSelector.vue';
 // import seed from './seed';
 export default {
   name: 'App',
@@ -61,6 +63,7 @@ export default {
     SelectedPhoto,
     TopBar,
     Search,
+    LanguageSelector
   },
   mounted() {
     this.listPhotos();
