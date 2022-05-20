@@ -7,7 +7,7 @@
       <div class="relative">
         <input
           type="text"
-          placeholder="Search..."
+          :placeholder="$t('search')"
           v-model="term"
           class="border focus:outline-none pl-2 pr-5 py-px dark:text-gray-700"
         />

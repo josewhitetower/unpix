@@ -24,7 +24,7 @@
     />
     <PhotosGrid :photos="selectedTab" @select="onSelect" />
     <footer class="py-4 text-center text-sm w-full bottom-0 bg-white dark:bg-gray-800 dark:text-gray-300">
-      Powered by
+      {{ $t('poweredBy') }}
       <a
         class="underline italic"
         href="https://unsplash.com/"

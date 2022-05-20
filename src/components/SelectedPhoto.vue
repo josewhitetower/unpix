@@ -43,7 +43,7 @@
             class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center text-xs mr-2"
           >
             <v-icon name="download" class="h-4 w-4 mr-2"></v-icon>
-            <span>Download</span>
+            <span>{{ $t('download') }}</span>
           </a>
           <button
             class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center text-xs"
@@ -54,7 +54,7 @@
               class="h-4 w-4 mr-2"
               :class="{'text-red-600': isFavorite}"
             ></v-icon>
-            <span>Favorites</span>
+            <span> {{ $t('favorites') }}</span>
           </button>
         </div>
         <div class="mb-4 dark:text-gray-300">

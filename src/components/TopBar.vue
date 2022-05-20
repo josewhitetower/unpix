@@ -8,7 +8,7 @@
       @click="$emit('select', 'photos')"
     >
       <v-icon name="grid" class="h-4 w-4"></v-icon>
-      <span class="ml-2">Photos</span>
+      <span class="ml-2"> {{ $t('photos') }}</span>
     </div>
     <div
       :class="{'border-current text-gray-800 dark:text-gray-300 border-t ': tab === 'favorites'}"
@@ -16,7 +16,7 @@
       @click="$emit('select', 'favorites')"
     >
       <v-icon name="heart" class="h-4 w-4"></v-icon>
-      <span class="ml-2">Favorites</span>
+      <span class="ml-2"> {{ $t('favorites') }}</span>
     </div>
   </div>
 </template>
